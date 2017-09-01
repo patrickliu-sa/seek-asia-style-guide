@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import Text from 'seek-asia-style-guide/react/Text/Text';
-import FbIcon from 'seek-asia-style-guide/react/FacebookIcon/FacebookIcon';
+import Text from 'seek-style-guide/react/Text/Text';
+import FbIcon from 'seek-style-guide/react/FacebookIcon/FacebookIcon';
 import styles from './nav.less';
 
 const noop = i => i;

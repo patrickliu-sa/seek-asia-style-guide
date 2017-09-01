@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import Text from 'seek-asia-style-guide/react/Text/Text';
-import MenuIcon from 'seek-asia-style-guide/react/HamburgerIcon/HamburgerIcon';
+import Text from 'seek-style-guide/react/Text/Text';
+import MenuIcon from 'seek-style-guide/react/HamburgerIcon/HamburgerIcon';
 import Nav from './components/Nav/Nav';
 import styles from './header.less';
 import links from './links';
