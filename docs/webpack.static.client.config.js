@@ -44,7 +44,7 @@ const config = {
       {
         test: /\.css\.js$/,
         include: appPaths,
-        loader: 'style!css?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!css-in-js!babel?' + JSON.stringify(babelConfig)
+        loader: 'css/locals?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!css-in-js!babel?' + JSON.stringify(babelConfig)
       },
       {
         test: /\.less$/,
