@@ -1,0 +1,81 @@
+@import (reference) "~seek-asia-style-guide/theme";
+@import (reference) "../ClearField/ClearFieldVariables";
+
+.root {
+  position: relative;
+}
+
+.input {
+  .touchableText();
+  padding: 0 @field-gutter-width;
+  border: @field-border-width solid @sk-mid-gray-light;
+  border-radius: @field-border-radius;
+  color: @sk-charcoal;
+  width: 100%;
+  background-color: @sk-white;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  &:not([readonly]):not([disabled]):focus,
+  .rootFocus & {
+    outline: none;
+    border-color: transparent;
+    .focus();
+  }
+
+  .invalid & {
+    border-color: transparent;
+    box-shadow: 0 0 0 @field-border-width @sk-pink;
+
+    &:not([readonly]):not([disabled]):focus,
+    .rootFocus & {
+      border-color: transparent;
+      box-shadow: 0 0 0 @field-border-width @sk-pink;
+    }
+  }
+
+  .canClear & {
+    padding: 0 @clear-button-width 0 @field-gutter-width;
+  }
+
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+  &::-ms-clear {
+    display: none;
+  }
+}
+
+.clearField {
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  .canClear & {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    max-width: initial;
+  }
+}
+
+.iconizedInput {
+  position: relative;
+  font-size: 16px;
+}
+
+.iconizedInput .icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 10px;
+  height: 10px;
+}
+
+.iconizedInput input {
+  text-indent: 18px;
+  width: 250px;
+  height: 32px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}

@@ -65,6 +65,7 @@ export { default as MonthPicker } from './MonthPicker/MonthPicker';
 export { default as SlideToggle } from './SlideToggle/SlideToggle';
 export { default as Textarea } from './Textarea/Textarea';
 export { default as TextField } from './TextField/TextField';
+export { default as IconizedTextField } from './IconizedTextField/IconizedTextField';
 
 // Accessibility
 export { default as ScreenReaderOnly } from './ScreenReaderOnly/ScreenReaderOnly';

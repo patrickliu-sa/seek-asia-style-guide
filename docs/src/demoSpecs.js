@@ -18,20 +18,23 @@ import JobCard from 'seek-style-guide/react/JobCard/JobCard.demo';
 import DefaultLogo from 'seek-style-guide/react/Logo/Logo.demo';
 import JobStreetLogo from 'seek-style-guide/jobStreet/Logo/Logo.demo';
 import JobsDBLogo from 'seek-style-guide/jobsDB/Logo/Logo.demo';
+import IconizedTextField from 'seek-style-guide/react/IconizedTextField/IconizedTextField.demo';
 
 const tenant = process.env.SKU_TENANT;
 
 let Header = DefaultHeader;
 let Logo = DefaultLogo;
 let Footer = DefaultFooter;
-if (tenant === 'jobStreet'){
+if (tenant === 'jobStreet') {
   Header = JobStreetHeader;
   Logo = JobStreetLogo;
   Footer = JobStreetFooter;
-}else if (tenant === 'jobsDB'){
+} else if (tenant === 'jobsDB') {
   Header = JobsDBHeader;
   Logo = JobsDBLogo;
 }
+
+console.log(IconizedTextField);
 
 export default [
   Text,
@@ -48,5 +51,6 @@ export default [
   Logo,
   Header,
   Footer,
-  JobCard
+  JobCard,
+  IconizedTextField
 ];
