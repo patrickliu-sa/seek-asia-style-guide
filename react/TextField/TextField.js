@@ -11,6 +11,8 @@ import FieldLabel from '../private/FieldLabel/FieldLabel';
 
 import invoke from 'lodash/invoke';
 
+const unused;
+
 function combineClassNames(props = {}, ...classNames) {
   const { className, ...restProps } = props;
 
