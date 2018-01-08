@@ -32,7 +32,8 @@
     "commitmsg": "validate-commit-msg",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "sketch-to-git": "node scripts/sketch-to-git",
-    "git-to-sketch": "node scripts/git-to-sketch"
+    "git-to-sketch": "node scripts/git-to-sketch",
+    "format": "prettier --single-quote --write '{jobsDB,jobStreet,react,standalone,theme,docs}/**/*.js'"
   },
   "config": {
     "commitizen": {
@@ -121,6 +122,7 @@
     "opn": "^4.0.1",
     "opn-cli": "^3.1.0",
     "postcss-prefix-selector": "^1.6.0",
+    "prettier": "1.9.2",
     "raf": "^3.3.2",
     "react": "^16.0.0",
     "react-addons-pure-render-mixin": "^15.3.1",
