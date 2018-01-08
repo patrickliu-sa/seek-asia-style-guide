@@ -17,7 +17,7 @@ const makeMonthString = ({ month, year }) => {
 };
 
 const getValueFromString = monthString => {
-  const [ year, month ] = monthString.split('-');
+  const [year, month] = monthString.split('-');
 
   return {
     year: parseInt(year, 10),
@@ -26,7 +26,6 @@ const getValueFromString = monthString => {
 };
 
 export default class NativeMonthPicker extends Component {
-
   static displayName = 'NativeMonthPicker';
 
   static propTypes = {

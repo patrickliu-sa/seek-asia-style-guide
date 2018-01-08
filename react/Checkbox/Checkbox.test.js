@@ -17,7 +17,9 @@ describe('Checkbox', () => {
 
   it('should render with className', () => {
     const className = 'testClassname';
-    const wrapper = shallow(<Checkbox {...requiredProps} className={className} />);
+    const wrapper = shallow(
+      <Checkbox {...requiredProps} className={className} />
+    );
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -60,12 +62,19 @@ describe('Checkbox', () => {
     });
 
     it('should render as checked', () => {
-      const wrapper = shallow(<Checkbox {...requiredProps} inputProps={{ checked: true }} />);
+      const wrapper = shallow(
+        <Checkbox {...requiredProps} inputProps={{ checked: true }} />
+      );
       expect(wrapper).toMatchSnapshot();
     });
 
     it('should pass through other props to the input', () => {
-      const wrapper = shallow(<Checkbox {...requiredProps} inputProps={{ checked: false, 'data-automation': 'first-name-field' }} />);
+      const wrapper = shallow(
+        <Checkbox
+          {...requiredProps}
+          inputProps={{ checked: false, 'data-automation': 'first-name-field' }}
+        />
+      );
       expect(wrapper).toMatchSnapshot();
     });
   });

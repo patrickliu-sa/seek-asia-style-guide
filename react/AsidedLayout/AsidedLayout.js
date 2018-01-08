@@ -5,8 +5,13 @@ import classnames from 'classnames';
 
 const defaultRenderAside = () => null;
 
-const conditionallyRenderAside = (condition, renderAside, classNameAside, size) => (
-  condition ?
+const conditionallyRenderAside = (
+  condition,
+  renderAside,
+  classNameAside,
+  size
+) =>
+  condition ? (
     <div
       className={classnames({
         [classNameAside]: classNameAside,
@@ -14,11 +19,18 @@ const conditionallyRenderAside = (condition, renderAside, classNameAside, size) 
       })}
       style={{ flexBasis: size }}>
       {renderAside()}
-    </div> :
-    null
-);
+    </div>
+  ) : null;
 
-export default function AsidedLayout({ className, children, renderAside = defaultRenderAside, classNameAside, size, reverse, ...restProps }) {
+export default function AsidedLayout({
+  className,
+  children,
+  renderAside = defaultRenderAside,
+  classNameAside,
+  size,
+  reverse,
+  ...restProps
+}) {
   return (
     <div
       {...restProps}
@@ -27,11 +39,9 @@ export default function AsidedLayout({ className, children, renderAside = defaul
         [styles.root]: true,
         [styles.reverse]: reverse
       })}>
-      { conditionallyRenderAside(reverse, renderAside, classNameAside, size) }
-      <div className={styles.content}>
-        {children}
-      </div>
-      { conditionallyRenderAside(!reverse, renderAside, classNameAside, size) }
+      {conditionallyRenderAside(reverse, renderAside, classNameAside, size)}
+      <div className={styles.content}>{children}</div>
+      {conditionallyRenderAside(!reverse, renderAside, classNameAside, size)}
     </div>
   );
 }

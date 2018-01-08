@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -31,10 +31,12 @@ class Header extends Component {
   }
 
   showNav(shouldShowNav) {
-    const eventAction = shouldShowNav ? 'addEventListener' : 'removeEventListener';
+    const eventAction = shouldShowNav ?
+      'addEventListener' :
+      'removeEventListener';
     document[eventAction]('click', this.handleClick, false);
     this.setState({
-      isNavActive: shouldShowNav,
+      isNavActive: shouldShowNav
     });
   }
 
@@ -44,52 +46,60 @@ class Header extends Component {
     const userLinks = links.getUserLinks(user.candidate);
 
     return (
-      <header className={styles.root} role="banner" aria-label="Primary navigation">
+      <header
+        className={styles.root}
+        role="banner"
+        aria-label="Primary navigation">
         <section className={styles.content}>
-          <div
-            className={styles.container}
-          >
+          <div className={styles.container}>
             <button
               className={styles.toggle}
               onClick={() => {
                 if (!isNavActive) {
                   this.showNav(true);
                 }
-              }}
-            >
+              }}>
               <MenuIcon />
             </button>
 
             <div
               className={styles.navWrapper}
-              ref={(node) => {
+              ref={node => {
                 this.dropdownNode = node;
-              }}
-            >
+              }}>
               <div
-                className={
-                  classNames({
-                    [styles.navContainer]: true,
-                    [styles.navContainerHide]: !isNavActive
-                  })
-                }
-              >
+                className={classNames({
+                  [styles.navContainer]: true,
+                  [styles.navContainerHide]: !isNavActive
+                })}>
                 <Nav key={'navLinks'} links={links.navLinks} />
                 <Nav key={'userLinks'} links={userLinks} />
-
               </div>
             </div>
 
             <ul className={styles.navbarUniversalLogin}>
               <li>
-                <Button className={styles.employerLink} key={'employerLinks'} color="hyperlink" component="a">Employer
-                  site</Button>
+                <Button
+                  className={styles.employerLink}
+                  key={'employerLinks'}
+                  color="hyperlink"
+                  component="a">
+                  Employer site
+                </Button>
               </li>
               <li>
-                <Button className={styles.loginLink} key={'navLinks'} color="hyperlink" component="a">Log in</Button>
+                <Button
+                  className={styles.loginLink}
+                  key={'navLinks'}
+                  color="hyperlink"
+                  component="a">
+                  Log in
+                </Button>
               </li>
               <li>
-                <Button key={'userLinks'} color="hyperlink" component="a">Sign up</Button>
+                <Button key={'userLinks'} color="hyperlink" component="a">
+                  Sign up
+                </Button>
               </li>
             </ul>
 

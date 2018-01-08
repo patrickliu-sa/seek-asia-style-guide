@@ -5,16 +5,12 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 export default class ScreenReaderOnly extends Component {
-
   static propTypes = {
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
       PropTypes.node
     ]),
-    component: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.string
-    ])
+    component: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
   };
 
   static defaultProps = {

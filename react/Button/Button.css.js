@@ -1,12 +1,12 @@
 import {
-	actionOrange,
-	actionYellow,
-	actionBlue,
-	actionGreen,
-	actionRed,
-	actionPastelBlue,
-	saWhite,
-	saGrey2
+  actionOrange,
+  actionYellow,
+  actionBlue,
+  actionGreen,
+  actionRed,
+  actionPastelBlue,
+  saWhite,
+  saGrey2
 } from '../../theme/palette/palette.js';
 
 const tenant = process.env.SKU_TENANT;
@@ -40,5 +40,4 @@ export default {
     backgroundColor: actionPastelBlue,
     color: saGrey2
   }
-
 };

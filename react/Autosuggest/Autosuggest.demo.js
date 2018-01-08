@@ -66,7 +66,12 @@ export default {
     id: 'jobTitles',
     label: 'Job Titles',
     autosuggestProps: {
-      suggestions: ['Developer', 'Product manager', 'Iteration manager', 'Designer'],
+      suggestions: [
+        'Developer',
+        'Product manager',
+        'Iteration manager',
+        'Designer'
+      ],
       onSuggestionsFetchRequested: () => {},
       onSuggestionsClearRequested: () => {},
       renderSuggestion: suggestion => <div>{suggestion}</div>,

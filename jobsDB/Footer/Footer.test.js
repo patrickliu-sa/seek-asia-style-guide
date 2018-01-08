@@ -33,5 +33,5 @@ describe('Footer component', () => {
       const wrapper = shallow(<Footer language="th" country="th" />);
       expect(wrapper).toMatchSnapshot();
     });
-  })
+  });
 });

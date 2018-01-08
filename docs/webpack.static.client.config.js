@@ -4,7 +4,9 @@ const autoprefixer = require('autoprefixer');
 const autoprefixerConfig = require('../config/autoprefixer.config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const decorateClientConfig = require('../webpack').decorateClientConfig;
-const babelConfig = require('../config/babel.config.js')({ reactHotLoader: false });
+const babelConfig = require('../config/babel.config.js')({
+  reactHotLoader: false
+});
 const failPlugin = require('webpack-fail-plugin');
 
 const appCss = new ExtractTextPlugin('app.css');
@@ -44,11 +46,18 @@ const config = {
       {
         test: /\.css\.js$/,
         include: appPaths,
-        loader: appCss.extract('style', 'css?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!css-in-js!babel?' + JSON.stringify(babelConfig))
+        loader: appCss.extract(
+          'style',
+          'css?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!css-in-js!babel?' +
+            JSON.stringify(babelConfig)
+        )
       },
       {
         test: /\.less$/,
-        loader: appCss.extract('style', 'css?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!less'),
+        loader: appCss.extract(
+          'style',
+          'css?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!less'
+        ),
         include: appPaths
       },
       {
@@ -63,9 +72,7 @@ const config = {
     modulesDirectories: ['node_modules', 'wip_modules', 'components']
   },
 
-  postcss: [
-    autoprefixer(autoprefixerConfig)
-  ],
+  postcss: [autoprefixer(autoprefixerConfig)],
 
   plugins: [
     new webpack.DefinePlugin({

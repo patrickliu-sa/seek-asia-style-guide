@@ -14,11 +14,16 @@ export default (
     <Route path="/typography" component={Typography} />
     <Route path="/page-layout" component={PageLayout} />
     <Route path="/playground" component={Playground} />
-    {
-      demoSpecs.map(demoSpec => {
-        const DemoRoute = () => <Demo spec={demoSpec} />;
-        return <Route key={demoSpec.title} path={demoSpec.route} tenantPath={demoSpec.tenantPath} component={DemoRoute} />;
-      })
-    }
+    {demoSpecs.map(demoSpec => {
+      const DemoRoute = () => <Demo spec={demoSpec} />;
+      return (
+        <Route
+          key={demoSpec.title}
+          path={demoSpec.route}
+          tenantPath={demoSpec.tenantPath}
+          component={DemoRoute}
+        />
+      );
+    })}
   </Route>
 );

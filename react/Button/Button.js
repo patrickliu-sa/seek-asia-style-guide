@@ -10,23 +10,25 @@ const isJobStreet = tenant === 'jobStreet';
 const isJobsDB = tenant === 'jobsDB';
 
 export default class Button extends Component {
-
   static displayName = 'Button';
 
   static propTypes = {
     color: PropTypes.oneOf([
-      'callToAction', 'hyperlink', 'completion', 'alert', 'highlight', 'transparent',
-      'blue', 'pink'
+      'callToAction',
+      'hyperlink',
+      'completion',
+      'alert',
+      'highlight',
+      'transparent',
+      'blue',
+      'pink'
     ]).isRequired,
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
       PropTypes.node
     ]).isRequired,
     className: PropTypes.string,
-    component: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.string
-    ]),
+    component: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
     isJobsDB: PropTypes.bool,
     isJobStreet: PropTypes.bool,
     loading: PropTypes.bool,
@@ -53,7 +55,15 @@ export default class Button extends Component {
   }
 
   render() {
-    const { color, className, loading, fullWidth, children, component, ...restProps } = this.props;
+    const {
+      color,
+      className,
+      loading,
+      fullWidth,
+      children,
+      component,
+      ...restProps
+    } = this.props;
 
     const combinedProps = {
       className: classnames(styles.root, className, {
@@ -75,5 +85,4 @@ export default class Button extends Component {
 
     return React.createElement(component, combinedProps, children);
   }
-
 }

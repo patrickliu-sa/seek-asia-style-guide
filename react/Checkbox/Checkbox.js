@@ -32,7 +32,7 @@ export default class Checkbox extends Component {
     }),
     type: PropTypes.oneOf([STANDARD, BUTTON]),
     position: PropTypes.oneOf([LEFT, RIGHT])
-  }
+  };
 
   static defaultProps = {
     className: '',
@@ -44,19 +44,15 @@ export default class Checkbox extends Component {
   };
 
   renderButton(label) {
-    return (
-      <span className={styles.button}>
-        {label}
-      </span>
-    );
+    return <span className={styles.button}>{label}</span>;
   }
 
   renderStandard(label) {
     return (
       <div className={styles.standard}>
-        { this.renderCheckBox(LEFT) }
+        {this.renderCheckBox(LEFT)}
         <span>{label}</span>
-        { this.renderCheckBox(RIGHT) }
+        {this.renderCheckBox(RIGHT)}
       </div>
     );
   }
@@ -68,8 +64,13 @@ export default class Checkbox extends Component {
       position === LEFT ? styles.checkBoxLeft : styles.checkBoxRight
     );
 
-    return position === currentPosition && (
-      <CheckMarkIcon svgClassName={styles.checkMark} className={checkBoxStyle} />
+    return (
+      position === currentPosition && (
+        <CheckMarkIcon
+          svgClassName={styles.checkMark}
+          className={checkBoxStyle}
+        />
+      )
     );
   }
 
@@ -78,11 +79,9 @@ export default class Checkbox extends Component {
 
     return (
       <label className={styles.label} htmlFor={id}>
-        {
-          type === STANDARD ?
-            this.renderStandard(label) :
-            this.renderButton(label)
-        }
+        {type === STANDARD ?
+          this.renderStandard(label) :
+          this.renderButton(label)}
       </label>
     );
   }
@@ -96,9 +95,7 @@ export default class Checkbox extends Component {
       id
     };
 
-    return (
-      <input {...allInputProps} />
-    );
+    return <input {...allInputProps} />;
   }
 
   render() {
@@ -111,8 +108,8 @@ export default class Checkbox extends Component {
 
     return (
       <div className={rootClassNames}>
-        { this.renderInput() }
-        { this.renderLabel() }
+        {this.renderInput()}
+        {this.renderLabel()}
       </div>
     );
   }

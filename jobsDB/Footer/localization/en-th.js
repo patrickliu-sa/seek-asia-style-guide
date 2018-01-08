@@ -16,4 +16,3 @@ export default {
   'footer.legalLink': `${mUrlWithLanguage}/legal.do`,
   'footer.legalLinkText': 'Legal terms'
 };
-

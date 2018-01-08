@@ -6,7 +6,9 @@ import classnames from 'classnames';
 
 export default function ButtonGroup({ className, children, ...restProps }) {
   return (
-    <div {...restProps} className={classnames({ [className]: className, [styles.group]: true })}>
+    <div
+      {...restProps}
+      className={classnames({ [className]: className, [styles.group]: true })}>
       {children}
     </div>
   );

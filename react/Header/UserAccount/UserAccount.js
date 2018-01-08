@@ -7,7 +7,11 @@ import ScrollLock from 'react-scrolllock';
 import ChevronIcon from '../../ChevronIcon/ChevronIcon';
 import ScreenReaderOnly from '../../ScreenReaderOnly/ScreenReaderOnly';
 import UserAccountMenu from '../UserAccountMenu/UserAccountMenu';
-import { AUTHENTICATED, UNAUTHENTICATED, AUTH_PENDING } from '../../private/authStatusTypes';
+import {
+  AUTHENTICATED,
+  UNAUTHENTICATED,
+  AUTH_PENDING
+} from '../../private/authStatusTypes';
 
 import smallDeviceOnly from '../../private/smallDeviceOnly';
 
@@ -54,9 +58,19 @@ export default class UserAccount extends Component {
   };
 
   render() {
-    const { locale, authenticationStatus, userName, linkRenderer, returnUrl, activeTab } = this.props;
+    const {
+      locale,
+      authenticationStatus,
+      userName,
+      linkRenderer,
+      returnUrl,
+      activeTab
+    } = this.props;
 
-    const mobileMenuLabel = calculateMobileMenuLabel(authenticationStatus, userName);
+    const mobileMenuLabel = calculateMobileMenuLabel(
+      authenticationStatus,
+      userName
+    );
     const desktopMenuLabel = userName;
 
     return (
@@ -65,12 +79,11 @@ export default class UserAccount extends Component {
         aria-labelledby="UserMenu"
         data-automation="user-account"
         className={styles.root}>
-
         <ScreenReaderOnly>
           <h1 id="UserMenu">User menu</h1>
         </ScreenReaderOnly>
 
-        {this.state.menuOpen && smallDeviceOnly() ? <ScrollLock /> : null }
+        {this.state.menuOpen && smallDeviceOnly() ? <ScrollLock /> : null}
 
         <input
           id="user-account-menu-toggle"
@@ -97,10 +110,18 @@ export default class UserAccount extends Component {
           onClick={this.handleMenuToggleClick}>
           <ScreenReaderOnly>Show user menu</ScreenReaderOnly>
           <span data-hj-masked={true}>
-            <span className={styles.mobileMenuLabel}>{ mobileMenuLabel }</span>
-            <span className={styles.desktopMenuLabel} data-automation="user-account-name">{ desktopMenuLabel }</span>
+            <span className={styles.mobileMenuLabel}>{mobileMenuLabel}</span>
+            <span
+              className={styles.desktopMenuLabel}
+              data-automation="user-account-name">
+              {desktopMenuLabel}
+            </span>
           </span>
-          <ChevronIcon direction="down" className={styles.chevron} svgClassName={styles.chevronSvg} />
+          <ChevronIcon
+            direction="down"
+            className={styles.chevron}
+            svgClassName={styles.chevronSvg}
+          />
         </label>
 
         <div onClick={this.handleMenuClick} className={styles.toggleContainer}>
@@ -112,7 +133,6 @@ export default class UserAccount extends Component {
             activeTab={activeTab}
           />
         </div>
-
       </nav>
     );
   }

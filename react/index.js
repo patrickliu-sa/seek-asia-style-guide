@@ -1,5 +1,7 @@
-export { default as StyleGuideProvider } from './StyleGuideProvider/StyleGuideProvider';
-export { default as SeekApp } from './StyleGuideProvider/StyleGuideProvider';  // Alias for backwards compatibility
+export {
+  default as StyleGuideProvider
+} from './StyleGuideProvider/StyleGuideProvider';
+export { default as SeekApp } from './StyleGuideProvider/StyleGuideProvider'; // Alias for backwards compatibility
 
 // Components
 export { default as Button } from './Button/Button';
@@ -39,7 +41,9 @@ export { default as ClearIcon } from './ClearIcon/ClearIcon';
 export { default as CloseIcon } from './CloseIcon/CloseIcon';
 export { default as CrossIcon } from './CrossIcon/CrossIcon';
 export { default as DeleteIcon } from './DeleteIcon/DeleteIcon';
-export { default as DownRightArrowIcon } from './DownRightArrowIcon/DownRightArrowIcon';
+export {
+  default as DownRightArrowIcon
+} from './DownRightArrowIcon/DownRightArrowIcon';
 export { default as ErrorIcon } from './ErrorIcon/ErrorIcon';
 export { default as FacebookIcon } from './FacebookIcon/FacebookIcon';
 export { default as HeartIcon } from './HeartIcon/HeartIcon';
@@ -74,6 +78,12 @@ export { default as Textarea } from './Textarea/Textarea';
 export { default as TextField } from './TextField/TextField';
 
 // Accessibility
-export { default as ScreenReaderOnly } from './ScreenReaderOnly/ScreenReaderOnly';
-export { default as ScreenReaderSkipLink } from './ScreenReaderSkipLink/ScreenReaderSkipLink';
-export { default as ScreenReaderSkipTarget } from './ScreenReaderSkipTarget/ScreenReaderSkipTarget';
+export {
+  default as ScreenReaderOnly
+} from './ScreenReaderOnly/ScreenReaderOnly';
+export {
+  default as ScreenReaderSkipLink
+} from './ScreenReaderSkipLink/ScreenReaderSkipLink';
+export {
+  default as ScreenReaderSkipTarget
+} from './ScreenReaderSkipTarget/ScreenReaderSkipTarget';

@@ -14,7 +14,6 @@ import smoothScroll from '../private/smoothScroll';
 import smallDeviceOnly from '../private/smallDeviceOnly';
 
 export default class Autosuggest extends Component {
-
   static displayName = 'Autosuggest';
 
   static propTypes = {
@@ -33,11 +32,15 @@ export default class Autosuggest extends Component {
       const propType = typeof suggestionsContainerClassName;
 
       if (propType !== 'undefined' && propType !== 'string') {
-        return new Error(`Invalid prop \`suggestionsContainerClassName\` of type \`${propType}\` supplied to \`${componentName}\`, expected \`string\`.`);
+        return new Error(
+          `Invalid prop \`suggestionsContainerClassName\` of type \`${propType}\` supplied to \`${componentName}\`, expected \`string\`.`
+        );
       }
 
       if (suggestionsContainer && suggestionsContainerClassName) {
-        return new Error('\`suggestionsContainerClassName\` will be overridden by the \`suggestionsContainer\` class in autosuggestProps \`theme\`. Please remove it.');
+        return new Error(
+          '`suggestionsContainerClassName` will be overridden by the `suggestionsContainer` class in autosuggestProps `theme`. Please remove it.'
+        );
       }
     }
     /* eslint-enable consistent-return */
@@ -53,10 +56,14 @@ export default class Autosuggest extends Component {
 
   state = {
     areSuggestionsShown: false
-  }
+  };
 
   componentWillUpdate(nextProps, nextState) {
-    if (!this.state.areSuggestionsShown && nextState.areSuggestionsShown && smallDeviceOnly()) {
+    if (
+      !this.state.areSuggestionsShown &&
+      nextState.areSuggestionsShown &&
+      smallDeviceOnly()
+    ) {
       smoothScroll(this.textField);
     }
   }
@@ -65,13 +72,13 @@ export default class Autosuggest extends Component {
     if (autosuggest !== null) {
       this.input = autosuggest.input;
     }
-  }
+  };
 
   storeTextFieldReference = textField => {
     if (textField !== null) {
       this.textField = textField.container;
     }
-  }
+  };
 
   renderSuggestionsContainer = ({ containerProps, children }) => {
     const { ref, ...rest } = containerProps;
@@ -88,7 +95,7 @@ export default class Autosuggest extends Component {
     };
 
     return <IsolatedScroll {...rest} ref={callRef} children={children} />;
-  }
+  };
 
   renderInputComponent = inputProps => {
     const { labelProps } = this.props;
@@ -105,16 +112,20 @@ export default class Autosuggest extends Component {
       ref: this.storeTextFieldReference,
       inputProps,
       labelProps: enrichedLabelProps,
-      ...omit(this.props, [ 'inputProps', 'labelProps', 'autosuggestProps' ])
+      ...omit(this.props, ['inputProps', 'labelProps', 'autosuggestProps'])
     };
 
-    return (
-      <TextField {...textFieldProps} />
-    );
-  }
+    return <TextField {...textFieldProps} />;
+  };
 
   render() {
-    const { inputProps, label, autosuggestProps, suggestionsContainerClassName, showMobileBackdrop } = this.props;
+    const {
+      inputProps,
+      label,
+      autosuggestProps,
+      suggestionsContainerClassName,
+      showMobileBackdrop
+    } = this.props;
     const { theme = {} } = autosuggestProps;
 
     const allAutosuggestProps = {
@@ -148,5 +159,4 @@ export default class Autosuggest extends Component {
       </div>
     );
   }
-
 }

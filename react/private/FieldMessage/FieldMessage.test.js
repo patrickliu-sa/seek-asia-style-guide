@@ -43,18 +43,33 @@ describe('FieldMessage', () => {
     });
 
     it('should have the right text when `message` is specified and no icon by default', () => {
-      render(<FieldMessage message="Something went wrong" messageProps={{ className: 'message' }} />);
+      render(
+        <FieldMessage
+          message="Something went wrong"
+          messageProps={{ className: 'message' }}
+        />
+      );
       expect(messageText()).to.equal('Something went wrong');
       expect(messageIcon).to.equal(null);
     });
 
     it('should pass through className to the message', () => {
-      render(<FieldMessage message="Something went wrong" messageProps={{ className: 'message first-name-message' }} />);
+      render(
+        <FieldMessage
+          message="Something went wrong"
+          messageProps={{ className: 'message first-name-message' }}
+        />
+      );
       expect(message.props.className).to.match(/first-name-message$/);
     });
 
     it('should default to secondary text', () => {
-      render(<FieldMessage message="Something went wrong" messageProps={{ className: 'message' }} />);
+      render(
+        <FieldMessage
+          message="Something went wrong"
+          messageProps={{ className: 'message' }}
+        />
+      );
       expect(message.props.secondary).to.equal(true);
     });
 
@@ -70,7 +85,15 @@ describe('FieldMessage', () => {
 
     describe('messageProps', () => {
       it('should pass through other props to the message', () => {
-        render(<FieldMessage message="Something went wrong" messageProps={{ className: 'message', 'data-automation': 'first-name-message' }} />);
+        render(
+          <FieldMessage
+            message="Something went wrong"
+            messageProps={{
+              className: 'message',
+              'data-automation': 'first-name-message'
+            }}
+          />
+        );
         expect(message.props['data-automation']).to.equal('first-name-message');
       });
     });
@@ -78,7 +101,13 @@ describe('FieldMessage', () => {
     describe('valid', () => {
       describe('set to false', () => {
         it('FieldMessage should have a icon and set text as critical', () => {
-          render(<FieldMessage valid={false} message="Something went wrong" messageProps={{ className: 'message' }} />);
+          render(
+            <FieldMessage
+              valid={false}
+              message="Something went wrong"
+              messageProps={{ className: 'message' }}
+            />
+          );
           expect(messageIcon).not.to.equal(null);
           expect(message.props.critical).to.equal(true);
         });
@@ -86,7 +115,13 @@ describe('FieldMessage', () => {
 
       describe('set to true', () => {
         it('Message should have a icon and set text as positive', () => {
-          render(<FieldMessage valid={true} message="Something went right" messageProps={{ className: 'message' }} />);
+          render(
+            <FieldMessage
+              valid={true}
+              message="Something went right"
+              messageProps={{ className: 'message' }}
+            />
+          );
           expect(messageIcon).not.to.equal(null);
           expect(message.props.positive).to.equal(true);
         });
@@ -95,14 +130,26 @@ describe('FieldMessage', () => {
 
     describe('valid & messageProps secondary', () => {
       it('secondary messageProps trumps valid = true but still have icon', () => {
-        render(<FieldMessage valid={true} message="Something went right" messageProps={{ className: 'message', secondary: true }} />);
+        render(
+          <FieldMessage
+            valid={true}
+            message="Something went right"
+            messageProps={{ className: 'message', secondary: true }}
+          />
+        );
         expect(messageIcon).not.to.equal(null);
         expect(message.props.positive).not.to.equal(true);
         expect(message.props.secondary).to.equal(true);
       });
 
       it('secondary messageProps trumps valid = false but still have icon', () => {
-        render(<FieldMessage valid={false} message="Something went wrong" messageProps={{ className: 'message', secondary: true }} />);
+        render(
+          <FieldMessage
+            valid={false}
+            message="Something went wrong"
+            messageProps={{ className: 'message', secondary: true }}
+          />
+        );
         expect(messageIcon).not.to.equal(null);
         expect(message.props.critical).not.to.equal(true);
         expect(message.props.secondary).to.equal(true);

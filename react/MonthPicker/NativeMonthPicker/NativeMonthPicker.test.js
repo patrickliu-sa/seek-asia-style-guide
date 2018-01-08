@@ -67,7 +67,9 @@ describe('NativeMonthPicker', () => {
     const onChange = newValue => {
       value = newValue;
     };
-    renderToDom(<NativeMonthPicker onChange={onChange} value={{ month: 6, year: 2010 }} />);
+    renderToDom(
+      <NativeMonthPicker onChange={onChange} value={{ month: 6, year: 2010 }} />
+    );
     input.value = '2012-11';
     Simulate.change(input);
     expect(value).to.deep.equal({
@@ -80,7 +82,9 @@ describe('NativeMonthPicker', () => {
     const onBlur = newValue => {
       value = newValue;
     };
-    renderToDom(<NativeMonthPicker onBlur={onBlur} value={{ month: 6, year: 2010 }} />);
+    renderToDom(
+      <NativeMonthPicker onBlur={onBlur} value={{ month: 6, year: 2010 }} />
+    );
     input.value = '2012-11';
     Simulate.blur(input);
     expect(value).to.deep.equal({

@@ -4,15 +4,15 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const decorateClientConfig = require('../../webpack').decorateClientConfig;
-const babelConfig = require('../../config/babel.config.js')({ reactHotLoader: false });
+const babelConfig = require('../../config/babel.config.js')({
+  reactHotLoader: false
+});
 const cssSelectorPrefix = require('./cssSelectorPrefix');
 
 const headerCss = new ExtractTextPlugin('styles.css');
 
 // Must be absolute paths
-const appPaths = [
-  __dirname
-];
+const appPaths = [__dirname];
 
 const config = {
   entry: path.resolve(__dirname, 'src/client.js'),
@@ -34,12 +34,15 @@ const config = {
       },
       {
         test: /\.less$/,
-        loader: headerCss.extract('style', [
-          'css?modules&localIdentName=[name]__[local]___[hash:base64:5]',
-          'postcss',
-          'less',
-          `string-replace?search=__standalone_css_selector_prefix__&replace=${cssSelectorPrefix}`
-        ].join('!')),
+        loader: headerCss.extract(
+          'style',
+          [
+            'css?modules&localIdentName=[name]__[local]___[hash:base64:5]',
+            'postcss',
+            'less',
+            `string-replace?search=__standalone_css_selector_prefix__&replace=${cssSelectorPrefix}`
+          ].join('!')
+        ),
         include: appPaths
       },
       {
@@ -54,27 +57,25 @@ const config = {
     modulesDirectories: ['node_modules', 'components']
   },
 
-  postcss: [
-    autoprefixer
-  ],
+  postcss: [autoprefixer],
 
-  plugins: [
-    headerCss
-  ].concat(process.env.NODE_ENV !== 'production' ? [
-    new HtmlWebpackPlugin()
-  ] : [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      output: {
-        comments: false
-      },
-      compress: {
-        warnings: false
-      }
-    })
-  ]),
+  plugins: [headerCss].concat(
+    process.env.NODE_ENV !== 'production'
+      ? [new HtmlWebpackPlugin()]
+      : [
+          new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+          }),
+          new webpack.optimize.UglifyJsPlugin({
+            output: {
+              comments: false
+            },
+            compress: {
+              warnings: false
+            }
+          })
+        ]
+  ),
 
   stats: { children: false }
 };

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -30,10 +30,12 @@ class Header extends Component {
   }
 
   showNav(shouldShowNav) {
-    const eventAction = shouldShowNav ? 'addEventListener' : 'removeEventListener';
+    const eventAction = shouldShowNav ?
+      'addEventListener' :
+      'removeEventListener';
     document[eventAction]('click', this.handleClick, false);
     this.setState({
-      isNavActive: shouldShowNav,
+      isNavActive: shouldShowNav
     });
   }
 
@@ -43,34 +45,31 @@ class Header extends Component {
     const userLinks = links.getUserLinks(user.candidate);
 
     return (
-      <header className={styles.root} role="banner" aria-label="Primary navigation">
+      <header
+        className={styles.root}
+        role="banner"
+        aria-label="Primary navigation">
         <section className={styles.content}>
-          <div
-            className={styles.container}
-          >
+          <div className={styles.container}>
             <button
               className={styles.toggle}
               onClick={() => {
                 if (!isNavActive) {
                   this.showNav(true);
                 }
-              }}
-            >
+              }}>
               <MenuIcon />
             </button>
             <div
               className={styles.navWrapper}
-              ref={(node) => {
+              ref={node => {
                 this.dropdownNode = node;
-              }}
-            >
+              }}>
               <div
-                className={
-                  classNames({
-                    [styles.navContainer]: true,
-                    [styles.navContainerHideOnMobile]: !isNavActive
-                  })
-                }>
+                className={classNames({
+                  [styles.navContainer]: true,
+                  [styles.navContainerHideOnMobile]: !isNavActive
+                })}>
                 <Nav key={'navLinks'} links={links.navLinks} />
                 <Nav key={'userLinks'} links={userLinks} isRightAligned />
               </div>
@@ -83,9 +82,10 @@ class Header extends Component {
                   </a>
                   <a
                     className={styles.link}
-                    href="https://www.jobstreet.com.my/en/cms/employer"
-                  >
-                    <Text className={styles.employerLink} strong>Employers</Text>
+                    href="https://www.jobstreet.com.my/en/cms/employer">
+                    <Text className={styles.employerLink} strong>
+                      Employers
+                    </Text>
                   </a>
                 </div>
               </div>

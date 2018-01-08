@@ -29,27 +29,24 @@ export default class Demo extends Component {
     const { activeStates } = this.state;
 
     return option.type === 'radio' ? (
-      <select className={styles.select} onChange={this.makeSelectChangeHandler(option)}>
-        {
-          option.states.map((state, i) => {
-            const selected = (activeStates[option.label] === state.label);
+      <select
+        className={styles.select}
+        onChange={this.makeSelectChangeHandler(option)}>
+        {option.states.map((state, i) => {
+          const selected = activeStates[option.label] === state.label;
 
-            return (
-              <option
-                key={i}
-                value={state.label}
-                selected={selected}>
-                { state.label }
-              </option>
-            );
-          })
-        }
+          return (
+            <option key={i} value={state.label} selected={selected}>
+              {state.label}
+            </option>
+          );
+        })}
       </select>
     ) : (
       option.states.map((state, i) => {
         const checked = Boolean(
           activeStates[option.label] &&
-          activeStates[option.label].indexOf(state.label) > -1
+            activeStates[option.label].indexOf(state.label) > -1
         );
 
         return (
@@ -60,7 +57,7 @@ export default class Demo extends Component {
                 checked={checked}
                 onChange={this.makeCheckboxChangeHandler(option, state)}
               />
-              { state.label }
+              {state.label}
             </label>
           </Text>
         );
@@ -70,22 +67,29 @@ export default class Demo extends Component {
 
   makeCheckboxChangeHandler = (option, state) => event => {
     const { checked } = event.target;
-    const { [option.label]: currentValue = [], ...restState } = this.state.activeStates;
+    const {
+      [option.label]: currentValue = [],
+      ...restState
+    } = this.state.activeStates;
 
     if (checked) {
       this.setState({
         activeStates: {
           ...restState,
-          [option.label]: option.type === 'radio' ? state.label :
-            currentValue.concat(state.label)
+          [option.label]:
+            option.type === 'radio' ?
+              state.label :
+              currentValue.concat(state.label)
         }
       });
     } else {
       this.setState({
         activeStates: {
           ...restState,
-          [option.label]: option.type === 'radio' ? null :
-            currentValue.filter(label => label !== state.label)
+          [option.label]:
+            option.type === 'radio' ?
+              null :
+              currentValue.filter(label => label !== state.label)
         }
       });
     }
@@ -111,14 +115,17 @@ export default class Demo extends Component {
       const { states } = option;
 
       return states.reduce((innerProps, state) => {
-        if (activeStates[option.label] && activeStates[option.label].indexOf(state.label) > -1) {
+        if (
+          activeStates[option.label] &&
+          activeStates[option.label].indexOf(state.label) > -1
+        ) {
           return state.transformProps(innerProps);
         }
 
         return innerProps;
       }, outerProps);
     }, initialProps);
-  }
+  };
 
   render() {
     const {
@@ -134,14 +141,11 @@ export default class Demo extends Component {
     return (
       <div className={styles.root}>
         <PageBlock>
-          {
-            title ? (
-              <Section header>
-                <Text screaming>{ title }</Text>
-              </Section>
-            ) :
-            null
-          }
+          {title ? (
+            <Section header>
+              <Text screaming>{title}</Text>
+            </Section>
+          ) : null}
         </PageBlock>
         <Baseline lineHeight={4} isVisible={true} type="bar" color="#e8e8e8">
           <div
@@ -149,26 +153,28 @@ export default class Demo extends Component {
               [styles.component]: true,
               [styles.component_block]: block
             })}>
-            <Container component={DemoComponent} componentProps={this.calculateProps()} />
+            <Container
+              component={DemoComponent}
+              componentProps={this.calculateProps()}
+            />
           </div>
         </Baseline>
-        {
-          options && options.length ? (
-            <PageBlock className={styles.optionsBlock}>
-              <div className={styles.options}>
-                {
-                  flatten(options.map(this.renderOption))
-                    .map((option, i) => (
-                      <div key={i} className={styles.optionItem}>{ option }</div>
-                    ))
-                  }
-              </div>
-            </PageBlock>
-          ) :
-          null
-        }
+        {options && options.length ? (
+          <PageBlock className={styles.optionsBlock}>
+            <div className={styles.options}>
+              {flatten(options.map(this.renderOption)).map((option, i) => (
+                <div key={i} className={styles.optionItem}>
+                  {option}
+                </div>
+              ))}
+            </div>
+          </PageBlock>
+        ) : null}
         <PageBlock className={styles.codeBlock}>
-          <Code jsx={codeElement} tenantPath={tenantPath ? tenantPath : 'react'} />
+          <Code
+            jsx={codeElement}
+            tenantPath={tenantPath ? tenantPath : 'react'}
+          />
         </PageBlock>
       </div>
     );

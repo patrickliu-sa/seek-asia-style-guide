@@ -14,8 +14,10 @@ export default function Logo({ svgClassName, tenant, ...restProps }) {
   } else if (tenant === 'jobStreet') {
     brandedlogoMarkup = jobStreetLogoMarkup;
   }
-  const svgWithClasses = brandedlogoMarkup
-    .replace('<svg ', `<svg class="${classnames(svgClassName)}" `);
+  const svgWithClasses = brandedlogoMarkup.replace(
+    '<svg ',
+    `<svg class="${classnames(svgClassName)}" `
+  );
 
   return (
     <div dangerouslySetInnerHTML={{ __html: svgWithClasses }} {...restProps} /> // eslint-disable-line react/no-danger

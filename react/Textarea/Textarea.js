@@ -18,7 +18,6 @@ function combineClassNames(props = {}, ...classNames) {
 }
 
 export default class Textarea extends Component {
-
   static displayName = 'Textarea';
 
   static propTypes = {
@@ -27,7 +26,9 @@ export default class Textarea extends Component {
       const { id } = props;
 
       if (typeof id !== 'string') {
-        return new Error(`Invalid prop \`id\` of type \`${typeof id}\` supplied to \`${componentName}\`, expected \`string\`.`);
+        return new Error(
+          `Invalid prop \`id\` of type \`${typeof id}\` supplied to \`${componentName}\`, expected \`string\`.`
+        );
       }
     },
     /* eslint-enable consistent-return */
@@ -40,23 +41,36 @@ export default class Textarea extends Component {
       const { id: inputId } = inputProps || {};
 
       if (typeof inputProps !== 'undefined' && typeof inputProps !== 'object') {
-        return new Error(`Invalid prop \`inputProps\` of type \`${typeof inputProps}\` supplied to \`${componentName}\`, expected \`object\`.`);
+        return new Error(
+          `Invalid prop \`inputProps\` of type \`${typeof inputProps}\` supplied to \`${componentName}\`, expected \`object\`.`
+        );
       }
 
       if (inputId && id) {
-        return new Error(`\`inputProps.id\` will be overridden by \`id\` in ${componentName}. Please remove it.`);
+        return new Error(
+          `\`inputProps.id\` will be overridden by \`id\` in ${componentName}. Please remove it.`
+        );
       }
     },
     countFeedback: (props, propName, componentName) => {
       const { inputProps = {} } = props;
       const { value } = inputProps;
 
-      if (typeof props[propName] !== 'function' && typeof props[propName] !== 'undefined') {
-        return new Error(`Invalid prop \`${propName}\` of type \`${typeof props[propName]}\` supplied to \`${componentName}\`, expected \`function\`.`);
+      if (
+        typeof props[propName] !== 'function' &&
+        typeof props[propName] !== 'undefined'
+      ) {
+        return new Error(
+          `Invalid prop \`${propName}\` of type \`${typeof props[
+            propName
+          ]}\` supplied to \`${componentName}\`, expected \`function\`.`
+        );
       }
 
       if (props[propName] && typeof value !== 'string') {
-        return new Error(`\`inputProps.value\` must be supplied if \`${propName}\` is set`);
+        return new Error(
+          `\`inputProps.value\` must be supplied if \`${propName}\` is set`
+        );
       }
     },
     secondaryLabel: PropTypes.string
@@ -93,14 +107,10 @@ export default class Textarea extends Component {
 
     const className = classnames({
       [styles.characterCount]: true,
-      [styles.invalidCharacterCount]: (count < 0)
+      [styles.invalidCharacterCount]: count < 0
     });
 
-    return (
-      <span className={className}>
-        { count }
-      </span>
-    );
+    return <span className={className}>{count}</span>;
   }
   /* eslint-enable consistent-return */
 
@@ -111,9 +121,7 @@ export default class Textarea extends Component {
       ...(id ? { id } : {})
     };
 
-    return (
-      <textarea {...allInputProps} />
-    );
+    return <textarea {...allInputProps} />;
   }
 
   render() {
@@ -125,22 +133,42 @@ export default class Textarea extends Component {
     });
 
     // eslint-disable-next-line react/prop-types
-    const { id, label, labelProps, invalid, help, helpProps, message, messageProps, secondaryLabel, tertiaryLabel, description } = this.props;
+    const {
+      id,
+      label,
+      labelProps,
+      invalid,
+      help,
+      helpProps,
+      message,
+      messageProps,
+      secondaryLabel,
+      tertiaryLabel,
+      description
+    } = this.props;
     const hasDescription = description.length > 0;
 
     return (
       <div className={classNames}>
-        <FieldLabel {...{ id, label, labelProps, secondaryLabel, tertiaryLabel, raw: hasDescription }} />
-        {
-          hasDescription ? <Text secondary>{description}</Text> : null
-        }
+        <FieldLabel
+          {...{
+            id,
+            label,
+            labelProps,
+            secondaryLabel,
+            tertiaryLabel,
+            raw: hasDescription
+          }}
+        />
+        {hasDescription ? <Text secondary>{description}</Text> : null}
         {this.renderInput()}
         <div className={styles.footer}>
-          <FieldMessage {...{ invalid, help, helpProps, valid, message, messageProps }} />
+          <FieldMessage
+            {...{ invalid, help, helpProps, valid, message, messageProps }}
+          />
           {this.renderCharacterCount()}
         </div>
       </div>
     );
   }
-
 }

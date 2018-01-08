@@ -12,11 +12,7 @@ const getSwatch = name => {
 
   return (
     <div className={styles.drop} key={name}>
-      <Droplet
-        color={value}
-        sizeInRows={5}
-        showHex={true}
-      />
+      <Droplet color={value} sizeInRows={5} showHex={true} />
     </div>
   );
 };
@@ -24,11 +20,9 @@ const getSwatch = name => {
 export default function ColorPreview() {
   return (
     <div>
-      {
-        Object.keys(brandValues)
-          .slice(0, 3)
-          .map(getSwatch)
-      }
+      {Object.keys(brandValues)
+        .slice(0, 3)
+        .map(getSwatch)}
     </div>
   );
 }

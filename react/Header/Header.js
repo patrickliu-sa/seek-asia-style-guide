@@ -14,9 +14,13 @@ import SignInRegister from './SignInRegister/SignInRegister';
 import UserAccount from './UserAccount/UserAccount';
 import employerLinkForLocale from './employerLinkForLocale';
 import StructuredDataSchema from './StructuredDataSchema/StructuredDataSchema';
-import { AUTHENTICATED, UNAUTHENTICATED, AUTH_PENDING } from '../private/authStatusTypes';
+import {
+  AUTHENTICATED,
+  UNAUTHENTICATED,
+  AUTH_PENDING
+} from '../private/authStatusTypes';
 
-const defaultLinkRenderer = props => (<a {...props} />);
+const defaultLinkRenderer = props => <a {...props} />;
 
 export default function Header({
   logoComponent: LogoComponent,
@@ -29,8 +33,9 @@ export default function Header({
   divider,
   returnUrl
 }) {
-  const isAuthenticated = (authenticationStatus === AUTHENTICATED && (userName || userEmail));
-  const isUnauthenticated = (authenticationStatus === UNAUTHENTICATED);
+  const isAuthenticated =
+    authenticationStatus === AUTHENTICATED && (userName || userEmail);
+  const isUnauthenticated = authenticationStatus === UNAUTHENTICATED;
 
   const userClasses = classnames({
     [styles.user]: true,
@@ -42,22 +47,25 @@ export default function Header({
   const displayName = userName || userEmail.split('@')[0];
 
   return (
-    <header className={styles.root} role="banner" aria-label="Primary navigation">
+    <header
+      className={styles.root}
+      role="banner"
+      aria-label="Primary navigation">
       <StructuredDataSchema locale={locale} />
       <section className={styles.content}>
         <div className={styles.banner}>
           <h1 data-automation="logo" className={styles.logo}>
             <LogoComponent locale={locale} svgClassName={styles.logoSvg} />
-            {
-              linkRenderer({
-                'data-analytics': 'header:jobs',
-                className: styles.logoLink,
-                href: '/',
-                children: <ScreenReaderOnly>SEEK</ScreenReaderOnly>
-              })
-            }
+            {linkRenderer({
+              'data-analytics': 'header:jobs',
+              className: styles.logoLink,
+              href: '/',
+              children: <ScreenReaderOnly>SEEK</ScreenReaderOnly>
+            })}
           </h1>
-          <Hidden screen className={styles.logoNote}>Australia’s #1 job site</Hidden>
+          <Hidden screen className={styles.logoNote}>
+            Australia’s #1 job site
+          </Hidden>
           <Hidden print className={styles.userWrapper}>
             <div className={userClasses}>
               <div className={styles.userAccountWrapper}>
@@ -71,19 +79,20 @@ export default function Header({
                 />
               </div>
               <div className={styles.signInRegisterWrapper}>
-                <SignInRegister linkRenderer={linkRenderer} returnUrl={returnUrl} />
+                <SignInRegister
+                  linkRenderer={linkRenderer}
+                  returnUrl={returnUrl}
+                />
               </div>
               <span className={styles.divider} />
             </div>
             <div className={styles.employerSite}>
-              {
-                linkRenderer({
-                  'data-analytics': 'header:employer+site',
-                  className: styles.employerLink,
-                  href: employerLinkForLocale(locale),
-                  children: 'Employer site'
-                })
-              }
+              {linkRenderer({
+                'data-analytics': 'header:employer+site',
+                className: styles.employerLink,
+                href: employerLinkForLocale(locale),
+                children: 'Employer site'
+              })}
             </div>
           </Hidden>
         </div>

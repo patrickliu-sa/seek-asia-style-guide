@@ -29,7 +29,6 @@ const attachRefs = (...refs) => ref => {
 };
 
 export default class TextField extends Component {
-
   static displayName = 'TextField';
 
   static propTypes = {
@@ -38,7 +37,9 @@ export default class TextField extends Component {
       const { id } = props;
 
       if (typeof id !== 'string') {
-        return new Error(`Invalid prop \`id\` of type \`${typeof id}\` supplied to \`${componentName}\`, expected \`string\`.`);
+        return new Error(
+          `Invalid prop \`id\` of type \`${typeof id}\` supplied to \`${componentName}\`, expected \`string\`.`
+        );
       }
     },
     /* eslint-enable consistent-return */
@@ -50,11 +51,15 @@ export default class TextField extends Component {
       const { id: inputId } = inputProps || {};
 
       if (typeof inputProps !== 'undefined' && typeof inputProps !== 'object') {
-        return new Error(`Invalid prop \`inputProps\` of type \`${typeof inputProps}\` supplied to \`${componentName}\`, expected \`object\`.`);
+        return new Error(
+          `Invalid prop \`inputProps\` of type \`${typeof inputProps}\` supplied to \`${componentName}\`, expected \`object\`.`
+        );
       }
 
       if (inputId && id) {
-        return new Error(`\`inputProps.id\` will be overridden by \`id\` in ${componentName}. Please remove it.`);
+        return new Error(
+          `\`inputProps.id\` will be overridden by \`id\` in ${componentName}. Please remove it.`
+        );
       }
     },
     /* eslint-enable consistent-return */
@@ -78,7 +83,7 @@ export default class TextField extends Component {
     if (textField !== null) {
       this.container = textField;
     }
-  }
+  };
 
   storeInputReference(input) {
     if (input !== null) {
@@ -101,9 +106,7 @@ export default class TextField extends Component {
       ref: attachRefs(this.storeInputReference, ref)
     };
 
-    return (
-      <input {...allInputProps} />
-    );
+    return <input {...allInputProps} />;
   }
 
   renderClear() {
@@ -118,8 +121,8 @@ export default class TextField extends Component {
 
   render() {
     const { className, valid, onClear, inputProps = {} } = this.props;
-    const hasValue = (inputProps.value && inputProps.value.length > 0);
-    const canClear = hasValue && (typeof onClear === 'function');
+    const hasValue = inputProps.value && inputProps.value.length > 0;
+    const canClear = hasValue && typeof onClear === 'function';
     const classNames = classnames({
       [styles.root]: true,
       [styles.invalid]: valid === false,
@@ -128,16 +131,30 @@ export default class TextField extends Component {
     });
 
     // eslint-disable-next-line react/prop-types
-    const { id, label, labelProps, secondaryLabel, tertiaryLabel, invalid, help, helpProps, message, messageProps } = this.props;
+    const {
+      id,
+      label,
+      labelProps,
+      secondaryLabel,
+      tertiaryLabel,
+      invalid,
+      help,
+      helpProps,
+      message,
+      messageProps
+    } = this.props;
 
     return (
       <div ref={this.storeContainerReference} className={classNames}>
-        <FieldLabel {...{ id, label, labelProps, secondaryLabel, tertiaryLabel }} />
+        <FieldLabel
+          {...{ id, label, labelProps, secondaryLabel, tertiaryLabel }}
+        />
         {this.renderInput()}
         {this.renderClear()}
-        <FieldMessage {...{ invalid, help, helpProps, valid, message, messageProps }} />
+        <FieldMessage
+          {...{ invalid, help, helpProps, valid, message, messageProps }}
+        />
       </div>
     );
   }
-
 }

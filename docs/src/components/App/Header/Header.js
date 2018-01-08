@@ -40,8 +40,14 @@ export default class Header extends Component {
         <PageBlock className={headerClasses}>
           <Section className={styles.headerSection}>
             <div className={styles.sectionContent}>
-              <Link className={classnames([styles.logoLink, brandStyle.logoLink])} to="/" onClick={this.handleMenuClose}>
-                <Logo svgClassName={classnames([styles.logo, brandStyle.logo])} tenant={this.props.tenant} />
+              <Link
+                className={classnames([styles.logoLink, brandStyle.logoLink])}
+                to="/"
+                onClick={this.handleMenuClose}>
+                <Logo
+                  svgClassName={classnames([styles.logo, brandStyle.logo])}
+                  tenant={this.props.tenant}
+                />
               </Link>
 
               <div className={styles.hamburger}>
@@ -63,7 +69,11 @@ export default class Header extends Component {
                   <PageBlock>
                     <Section header>
                       <Card transparent>
-                        <Text yelling regular><Link className={styles.link} to="/">Home</Link></Text>
+                        <Text yelling regular>
+                          <Link className={styles.link} to="/">
+                            Home
+                          </Link>
+                        </Text>
                       </Card>
 
                       <Card transparent>
@@ -72,8 +82,16 @@ export default class Header extends Component {
                         </h2>
                       </Card>
                       <Card transparent>
-                        <Text yelling regular><Link className={styles.link} to="/typography">Typography</Link></Text>
-                        <Text yelling regular><Link className={styles.link} to="/page-layout">Page Layout</Link></Text>
+                        <Text yelling regular>
+                          <Link className={styles.link} to="/typography">
+                            Typography
+                          </Link>
+                        </Text>
+                        <Text yelling regular>
+                          <Link className={styles.link} to="/page-layout">
+                            Page Layout
+                          </Link>
+                        </Text>
                       </Card>
 
                       <Card transparent>
@@ -82,15 +100,13 @@ export default class Header extends Component {
                         </h2>
                       </Card>
                       <Card transparent>
-                        {
-                          demoSpecs.map(demoSpec => (
-                            <Text yelling regular key={demoSpec.title}>
-                              <Link className={styles.link} to={demoSpec.route}>
-                                { demoSpec.title }
-                              </Link>
-                            </Text>
-                          ))
-                        }
+                        {demoSpecs.map(demoSpec => (
+                          <Text yelling regular key={demoSpec.title}>
+                            <Link className={styles.link} to={demoSpec.route}>
+                              {demoSpec.title}
+                            </Link>
+                          </Text>
+                        ))}
                       </Card>
                     </Section>
                   </PageBlock>

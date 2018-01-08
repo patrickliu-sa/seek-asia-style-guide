@@ -4,7 +4,9 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const decorateServerConfig = require('../webpack').decorateServerConfig;
-const babelConfig = require('../config/babel.config.js')({ reactHotLoader: false });
+const babelConfig = require('../config/babel.config.js')({
+  reactHotLoader: false
+});
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 const failPlugin = require('webpack-fail-plugin');
 
@@ -37,11 +39,14 @@ const config = {
       {
         test: /\.css\.js$/,
         include: appPaths,
-        loader: 'css/locals?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!css-in-js!babel?' + JSON.stringify(babelConfig)
+        loader:
+          'css/locals?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!css-in-js!babel?' +
+          JSON.stringify(babelConfig)
       },
       {
         test: /\.less$/,
-        loader: 'css/locals?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!less',
+        loader:
+          'css/locals?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!less',
         include: appPaths
       },
       {
@@ -56,9 +61,7 @@ const config = {
     modulesDirectories: ['node_modules', 'wip_modules', 'components']
   },
 
-  postcss: [
-    autoprefixer
-  ],
+  postcss: [autoprefixer],
 
   plugins: [
     new webpack.DefinePlugin({

@@ -20,7 +20,13 @@ const renderChevron = chevron => {
   );
 };
 
-export default function TextLink({ component: Root, className, children, chevron, ...restProps }) {
+export default function TextLink({
+  component: Root,
+  className,
+  children,
+  chevron,
+  ...restProps
+}) {
   const allProps = {
     ...restProps,
     className: classnames(styles.link, className)

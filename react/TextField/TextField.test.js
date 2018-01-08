@@ -85,7 +85,14 @@ describe('TextField', () => {
     });
 
     it('should pass through other props to the input', () => {
-      render(<TextField inputProps={{ id: 'firstName', 'data-automation': 'first-name-field' }} />);
+      render(
+        <TextField
+          inputProps={{
+            id: 'firstName',
+            'data-automation': 'first-name-field'
+          }}
+        />
+      );
       expect(input.props.id).to.equal('firstName');
       expect(input.props['data-automation']).to.equal('first-name-field');
     });
@@ -116,17 +123,23 @@ describe('TextField', () => {
     });
 
     it('should not be visible when value is empty', () => {
-      renderToDom(<TextField inputProps={{ value: '' }} onClear={handleClear} />);
+      renderToDom(
+        <TextField inputProps={{ value: '' }} onClear={handleClear} />
+      );
       expect(isClearButtonVisible()).to.equal(false);
     });
 
     it('should be visible when value is provided', () => {
-      renderToDom(<TextField inputProps={{ value: 'abc' }} onClear={handleClear} />);
+      renderToDom(
+        <TextField inputProps={{ value: 'abc' }} onClear={handleClear} />
+      );
       expect(isClearButtonVisible()).to.equal(true);
     });
 
     it('should be visible when value has white spaces only', () => {
-      renderToDom(<TextField inputProps={{ value: '  ' }} onClear={handleClear} />);
+      renderToDom(
+        <TextField inputProps={{ value: '  ' }} onClear={handleClear} />
+      );
       expect(isClearButtonVisible()).to.equal(true);
     });
 

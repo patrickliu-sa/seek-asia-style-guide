@@ -2,7 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const decorateClientConfig = require('../webpack').decorateClientConfig;
-const babelConfig = require('../config/babel.config.js')({ reactHotLoader: true });
+const babelConfig = require('../config/babel.config.js')({
+  reactHotLoader: true
+});
 
 // Must be absolute paths
 const appPaths = [
@@ -44,11 +46,14 @@ const config = decorateClientConfig({
       {
         test: /\.css\.js$/,
         include: appPaths,
-        loader: 'style!css?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!css-in-js!babel?' + JSON.stringify(babelConfig)
+        loader:
+          'style!css?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!css-in-js!babel?' +
+          JSON.stringify(babelConfig)
       },
       {
         test: /\.less$/,
-        loader: 'style!css?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!less',
+        loader:
+          'style!css?modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss!less',
         include: appPaths
       },
       {
@@ -63,9 +68,7 @@ const config = decorateClientConfig({
     modulesDirectories: ['node_modules', 'wip_modules', 'components']
   },
 
-  postcss: [
-    autoprefixer
-  ],
+  postcss: [autoprefixer],
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

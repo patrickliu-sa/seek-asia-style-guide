@@ -1,7 +1,7 @@
 const baseUrl = 'https://id.jobsdb.com';
 const baseUrlWithLanguage = `${baseUrl}/id/id`;
 const wpUrlWithLanguage = `${baseUrl}/id-id`;
-const mbaseUrl = 'https://m.jobsdb.co.id'
+const mbaseUrl = 'https://m.jobsdb.co.id';
 const mUrlWithLanguage = `${mbaseUrl}/en-id`;
 
 export default {
@@ -16,4 +16,3 @@ export default {
   'footer.legalLink': `${mUrlWithLanguage}/legal.do`,
   'footer.legalLinkText': 'Syarat Hukum'
 };
-

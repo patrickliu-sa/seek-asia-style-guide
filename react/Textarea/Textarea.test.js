@@ -73,7 +73,14 @@ describe('Textarea', () => {
     });
 
     it('should pass through other props to the input', () => {
-      render(<Textarea inputProps={{ id: 'firstName', 'data-automation': 'first-name-field' }} />);
+      render(
+        <Textarea
+          inputProps={{
+            id: 'firstName',
+            'data-automation': 'first-name-field'
+          }}
+        />
+      );
       expect(input.props.id).to.equal('firstName');
       expect(input.props['data-automation']).to.equal('first-name-field');
     });
@@ -94,9 +101,11 @@ describe('Textarea', () => {
       expect(textarea.props.children[0].props.secondaryLabel).to.equal('');
     });
 
-    it('should pass secondaryLabel message if \`secondaryLabel\` is supplied', () => {
+    it('should pass secondaryLabel message if `secondaryLabel` is supplied', () => {
       render(<Textarea secondaryLabel="secondary" />);
-      expect(textarea.props.children[0].props.secondaryLabel).to.equal('secondary');
+      expect(textarea.props.children[0].props.secondaryLabel).to.equal(
+        'secondary'
+      );
     });
   });
 
@@ -118,26 +127,38 @@ describe('Textarea', () => {
       expect(characterCount).to.equal(null);
     });
 
-    it('should error if \`countFeedback\` is not a function', () => {
+    it('should error if `countFeedback` is not a function', () => {
       render(<Textarea countFeedback={true} />);
       expect(errors[0]).to.match(/Invalid prop `countFeedback`/);
     });
 
-    it('should error if \`countFeedback\` is supplied without \`inputProps.value\`', () => {
+    it('should error if `countFeedback` is supplied without `inputProps.value`', () => {
       const countFeedback = v => ({ count: v.length });
       render(<Textarea countFeedback={countFeedback} />);
-      expect(errors[0]).to.match(/`inputProps.value` must be supplied if `countFeedback` is set/);
+      expect(errors[0]).to.match(
+        /`inputProps.value` must be supplied if `countFeedback` is set/
+      );
     });
 
-    it('should show count value if \`countFeedback\` function is supplied correctly', () => {
+    it('should show count value if `countFeedback` function is supplied correctly', () => {
       const countFeedback = v => ({ count: v.length });
-      render(<Textarea countFeedback={countFeedback} inputProps={{ value: 'Test value' }} />);
+      render(
+        <Textarea
+          countFeedback={countFeedback}
+          inputProps={{ value: 'Test value' }}
+        />
+      );
       expect(characterCount.props.children).to.equal(10);
     });
 
-    it('should hide count value if \`countFeedback\` function returns \`{ show: false }\`', () => {
+    it('should hide count value if `countFeedback` function returns `{ show: false }`', () => {
       const countFeedback = () => ({ show: false });
-      render(<Textarea countFeedback={countFeedback} inputProps={{ value: 'Test value' }} />);
+      render(
+        <Textarea
+          countFeedback={countFeedback}
+          inputProps={{ value: 'Test value' }}
+        />
+      );
       expect(characterCount).to.equal(null);
     });
   });

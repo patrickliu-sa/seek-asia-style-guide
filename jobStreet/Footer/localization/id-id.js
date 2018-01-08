@@ -19,6 +19,7 @@ export default {
   'footer.safeLinkText': 'Panduan Mencari Kerja Secara Aman',
   'footer.helpLink': `${baseUrlWithLanguage}/user/`,
   'footer.helpLinkText': 'Bantuan',
-  'footer.feedbackLink': 'https://myjobstreet.jobstreet.co.id/home/feedback.php?site=id&sub=feedback',
+  'footer.feedbackLink':
+    'https://myjobstreet.jobstreet.co.id/home/feedback.php?site=id&sub=feedback',
   'footer.feedbackLinkText': 'Kirim Saran'
 };

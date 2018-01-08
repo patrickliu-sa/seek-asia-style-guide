@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import JobCardLoader from './JobCardLoader';
 import PageBlock from '../PageBlock/PageBlock';
 
-const JobCardLoaderContainer = ({ component: DemoComponent, componentProps }) => {
+const JobCardLoaderContainer = ({
+  component: DemoComponent,
+  componentProps
+}) => {
   return (
     <PageBlock style={{ width: '100%' }}>
       <DemoComponent {...componentProps} />

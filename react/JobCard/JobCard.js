@@ -30,35 +30,31 @@ const JobCard = ({ job, keyword = '' }) => {
   if (keywordParts) {
     title = (
       <div>
-        {
-          keywordParts.map((part, index) => {
-            return (
-              <Text
-                strong={part.highlight}
-                className={styles.positionTitle}
-                key={index}>
-                {part.text}
-              </Text>
-            );
-          })
-        }
+        {keywordParts.map((part, index) => {
+          return (
+            <Text
+              strong={part.highlight}
+              className={styles.positionTitle}
+              key={index}>
+              {part.text}
+            </Text>
+          );
+        })}
       </div>
     );
   }
   if (companyParts) {
     company = (
       <span>
-        {
-          companyParts.map((part, index) => {
-            return (
-              <span
-                className={part.highlight ? styles.highlight : null}
-                key={index}>
-                {part.text}
-              </span>
-            );
-          })
-        }
+        {companyParts.map((part, index) => {
+          return (
+            <span
+              className={part.highlight ? styles.highlight : null}
+              key={index}>
+              {part.text}
+            </span>
+          );
+        })}
       </span>
     );
   }
@@ -66,37 +62,61 @@ const JobCard = ({ job, keyword = '' }) => {
     <Card className={styles.root}>
       <Section>
         <Text whispering className={styles.company}>
-          {job.featuredLabel && (<span className={styles.featuredLabel}>{job.featuredLabel}</span>)}
-          {job.classifiedLabel && (<span className={styles.classifiedLabel}>{job.classifiedLabel}</span>)}
-          {job.confidentialLabel && (<span className={styles.confidentialLabel}>{job.confidentialLabel}</span>)}
+          {job.featuredLabel && (
+            <span className={styles.featuredLabel}>{job.featuredLabel}</span>
+          )}
+          {job.classifiedLabel && (
+            <span className={styles.classifiedLabel}>
+              {job.classifiedLabel}
+            </span>
+          )}
+          {job.confidentialLabel && (
+            <span className={styles.confidentialLabel}>
+              {job.confidentialLabel}
+            </span>
+          )}
           {company}
         </Text>
         {title}
       </Section>
-      {job.sellingPoints &&
-        <Section className={styles.sellingPointsSection} >
-          <ul className={styles.sellingPointsList} >
+      {job.sellingPoints && (
+        <Section className={styles.sellingPointsSection}>
+          <ul className={styles.sellingPointsList}>
             {job.sellingPoints.map((sellingPoint, i) => {
               return (
-                <li key={i}><Text intimate className={styles.sellingPoint}>{sellingPoint}</Text></li>
+                <li key={i}>
+                  <Text intimate className={styles.sellingPoint}>
+                    {sellingPoint}
+                  </Text>
+                </li>
               );
             })}
           </ul>
         </Section>
-      }
-      { job.description && (
+      )}
+      {job.description && (
         <Section className={styles.jobDescriptionSection}>
-          <Text intimate className={styles.bodyDescriptionText}>{job.description}</Text>
+          <Text intimate className={styles.bodyDescriptionText}>
+            {job.description}
+          </Text>
         </Section>
       )}
       <Section className={styles.footerSection}>
         <div className={styles.footerLeft}>
           <div className={styles.jobInfoContainer}>
             <div className={styles.jobInfoList}>
-              <Text whispering className={styles.jobInfo}><LocationIcon className={styles.jobInfoIcon} /> {job.location}</Text>
-              { job.salary && (<Text whispering className={styles.jobInfo}><MoneyIcon className={styles.jobInfoIcon} /> {job.salary}</Text>)}
+              <Text whispering className={styles.jobInfo}>
+                <LocationIcon className={styles.jobInfoIcon} /> {job.location}
+              </Text>
+              {job.salary && (
+                <Text whispering className={styles.jobInfo}>
+                  <MoneyIcon className={styles.jobInfoIcon} /> {job.salary}
+                </Text>
+              )}
             </div>
-            <Text whispering className={styles.postingDuration}>{job.postingDuration}</Text>
+            <Text whispering className={styles.postingDuration}>
+              {job.postingDuration}
+            </Text>
           </div>
         </div>
         {job.companyLogoUrl && (

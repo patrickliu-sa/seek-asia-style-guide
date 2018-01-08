@@ -33,7 +33,8 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "sketch-to-git": "node scripts/sketch-to-git",
     "git-to-sketch": "node scripts/git-to-sketch",
-    "format": "prettier --single-quote --write '{jobsDB,jobStreet,react,standalone,theme,docs}/**/*.js'"
+    "format": "prettier --single-quote --jsx-bracket-same-line --write '{jobsDB,jobStreet,react,standalone,theme,docs}/**/*.js'",
+    "lint-fix": "eslint --fix app standalone/*/src docs/src react test jobsDB jobStreet"
   },
   "config": {
     "commitizen": {
@@ -106,6 +107,7 @@
     "eslint": "^3.17.1",
     "eslint-plugin-babel": "^4.0.1",
     "eslint-plugin-jest": "^1.0.2",
+    "eslint-plugin-prettier": "^2.4.0",
     "eslint-plugin-react": "^6.0.0-alpha.1",
     "extract-zip": "^1.6.5",
     "gh-pages": "^0.11.0",

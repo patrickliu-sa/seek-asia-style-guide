@@ -11,7 +11,6 @@ import TickCircleIcon from '../../TickCircleIcon/TickCircleIcon';
 import Text from '../../Text/Text';
 
 export default class FieldMessage extends Component {
-
   static displayName = 'FieldMessage';
 
   static propTypes = {
@@ -19,10 +18,7 @@ export default class FieldMessage extends Component {
     help: PropTypes.string,
     helpProps: PropTypes.object,
     valid: PropTypes.bool,
-    message: PropTypes.oneOfType([
-      PropTypes.oneOf([false]),
-      PropTypes.node
-    ]),
+    message: PropTypes.oneOfType([PropTypes.oneOf([false]), PropTypes.node]),
     messageProps: PropTypes.object
   };
 
@@ -46,7 +42,12 @@ export default class FieldMessage extends Component {
     const { message, valid } = this.props;
 
     if (message) {
-      const { critical, positive, secondary, ...restMessageProps } = this.props.messageProps;
+      const {
+        critical,
+        positive,
+        secondary,
+        ...restMessageProps
+      } = this.props.messageProps;
 
       return (
         <Text
@@ -93,7 +94,9 @@ export default class FieldMessage extends Component {
     const { invalid, help, helpProps, message } = this.props;
 
     if (invalid || help || helpProps) {
-      throw new Error('WARNING: "invalid", "help", and "helpProps" have been deprecated in favour of "valid" and "message" props');
+      throw new Error(
+        'WARNING: "invalid", "help", and "helpProps" have been deprecated in favour of "valid" and "message" props'
+      );
     }
 
     const classNames = classnames({
@@ -101,10 +104,6 @@ export default class FieldMessage extends Component {
       [styles.noMarginBottom]: message || message === false
     });
 
-    return (
-      <div className={classNames}>
-        {this.renderMessage()}
-      </div>
-    );
+    return <div className={classNames}>{this.renderMessage()}</div>;
   }
 }

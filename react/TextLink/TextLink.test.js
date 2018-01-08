@@ -16,6 +16,8 @@ describe('TextLink', () => {
   });
 
   it('should render with chevron', () => {
-    expect(shallow(<TextLink chevron="right">Google</TextLink>)).toMatchSnapshot();
+    expect(
+      shallow(<TextLink chevron="right">Google</TextLink>)
+    ).toMatchSnapshot();
   });
 });

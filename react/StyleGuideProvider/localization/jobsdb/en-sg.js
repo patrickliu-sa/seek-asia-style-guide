@@ -1,3 +1,4 @@
 export default {
-  'meta.title': 'Search & Apply Singapore Jobs, Careers &  Employment Opportunities - jobsDB Singapore'
+  'meta.title':
+    'Search & Apply Singapore Jobs, Careers &  Employment Opportunities - jobsDB Singapore'
 };

@@ -10,9 +10,7 @@ export default ({ path, template }, callback) => {
   const history = createMemoryHistory(path);
 
   match({ routes, history }, (error, redirectLocation, renderProps) => {
-    const html = renderToString(
-      <RouterContext {...renderProps} />
-    );
+    const html = renderToString(<RouterContext {...renderProps} />);
 
     callback(null, template({ html, baseHref }));
   });

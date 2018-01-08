@@ -5,16 +5,26 @@ import PropTypes from 'prop-types';
 
 import classnames from 'classnames';
 
-export default function Icon({ markup, className, svgClassName, ...restProps }) {
-  const svgWithClasses = markup
-    .replace('<svg ', `<svg class="${classnames(styles.svg, svgClassName)}" `);
+export default function Icon({
+  markup,
+  className,
+  svgClassName,
+  ...restProps
+}) {
+  const svgWithClasses = markup.replace(
+    '<svg ',
+    `<svg class="${classnames(styles.svg, svgClassName)}" `
+  );
   const combinedProps = {
     ...restProps,
     className: classnames(styles.root, className)
   };
 
   return (
-    <span dangerouslySetInnerHTML={{ __html: svgWithClasses }} {...combinedProps} /> // eslint-disable-line react/no-danger
+    <span
+      dangerouslySetInnerHTML={{ __html: svgWithClasses }}
+      {...combinedProps}
+    /> // eslint-disable-line react/no-danger
   );
 }
 

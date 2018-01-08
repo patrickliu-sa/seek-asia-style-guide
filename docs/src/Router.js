@@ -8,7 +8,5 @@ const browserHistory = useBasename(createHistory)({
 });
 
 export default function RouterComponent() {
-  return (
-    <Router routes={routes} history={browserHistory} />
-  );
+  return <Router routes={routes} history={browserHistory} />;
 }

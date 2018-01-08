@@ -12,7 +12,8 @@ import jobStreetLocalization from './localization/jobstreet';
 const defaultPageTitle = 'SEEK Asia';
 
 const getLocalisedPageTitle = (country, language, tenant) => {
-  const brandLocalization = tenant === 'jobStreet' ? jobStreetLocalization : jobsDBLocalization;
+  const brandLocalization =
+    tenant === 'jobStreet' ? jobStreetLocalization : jobsDBLocalization;
   const localeCode = `${language}-${country}`;
 
   if (brandLocalization && brandLocalization[localeCode]) {
@@ -21,7 +22,16 @@ const getLocalisedPageTitle = (country, language, tenant) => {
   return defaultPageTitle;
 };
 
-export default function StyleGuideProvider({ fullScreen, children, meta, link, title, country, language, tenant }) {
+export default function StyleGuideProvider({
+  fullScreen,
+  children,
+  meta,
+  link,
+  title,
+  country,
+  language,
+  tenant
+}) {
   const className = classnames({
     [styles.root]: true,
     [styles.fullScreen]: fullScreen
@@ -31,11 +41,7 @@ export default function StyleGuideProvider({ fullScreen, children, meta, link, t
 
   return (
     <div className={className}>
-      <Helmet
-        title={pageTitle}
-        meta={meta}
-        link={link}
-      />
+      <Helmet title={pageTitle} meta={meta} link={link} />
 
       <ScreenReaderOnly component="div">
         <h1>{pageTitle}</h1>

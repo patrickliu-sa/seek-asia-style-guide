@@ -12,7 +12,6 @@ import FieldMessage from '../private/FieldMessage/FieldMessage';
 import FieldLabel from '../private/FieldLabel/FieldLabel';
 
 export default class MonthPicker extends Component {
-
   static displayName = 'MonthPicker';
 
   static propTypes = {
@@ -21,7 +20,9 @@ export default class MonthPicker extends Component {
       const { id } = props;
 
       if (typeof id !== 'string') {
-        return new Error(`Invalid prop \`id\` of type \`${typeof id}\` supplied to \`${componentName}\`, expected \`string\`.`);
+        return new Error(
+          `Invalid prop \`id\` of type \`${typeof id}\` supplied to \`${componentName}\`, expected \`string\`.`
+        );
       }
     },
     className: PropTypes.string,
@@ -59,10 +60,10 @@ export default class MonthPicker extends Component {
       valid
     };
 
-    return (
-      native ?
-        <NativeMonthPicker {...monthPickerProps} /> :
-        <CustomMonthPicker {...monthPickerProps} />
+    return native ? (
+      <NativeMonthPicker {...monthPickerProps} />
+    ) : (
+      <CustomMonthPicker {...monthPickerProps} />
     );
   }
 
@@ -74,15 +75,30 @@ export default class MonthPicker extends Component {
     });
 
     // eslint-disable-next-line react/prop-types
-    const { id, label, labelProps, secondaryLabel, tertiaryLabel, invalid, help, helpProps, valid, message, messageProps } = this.props;
+    const {
+      id,
+      label,
+      labelProps,
+      secondaryLabel,
+      tertiaryLabel,
+      invalid,
+      help,
+      helpProps,
+      valid,
+      message,
+      messageProps
+    } = this.props;
 
     return (
       <div className={classNames}>
-        <FieldLabel {...{ id, label, labelProps, secondaryLabel, tertiaryLabel }} />
+        <FieldLabel
+          {...{ id, label, labelProps, secondaryLabel, tertiaryLabel }}
+        />
         {this.renderInput()}
-        <FieldMessage {...{ invalid, help, helpProps, valid, message, messageProps }} />
+        <FieldMessage
+          {...{ invalid, help, helpProps, valid, message, messageProps }}
+        />
       </div>
     );
   }
-
 }
