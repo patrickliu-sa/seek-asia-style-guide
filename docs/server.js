@@ -19,7 +19,7 @@ const defaultPort = 3000;
 const jobStreetPort = 3001;
 const jobsDBPort = 3002;
 
-let port = defaultPort;
+let port;
 
 switch (options.tenant) {
   case 'jobsDB':
@@ -28,13 +28,13 @@ switch (options.tenant) {
   case 'jobStreet':
     port = jobStreetPort;
     break;
+  default:
+    port = defaultPort;
 }
 
-config.plugins.push(
-  new webpack.DefinePlugin({
-    'process.env.SKU_TENANT': JSON.stringify(options.tenant)
-  })
-);
+config.plugins.push(new webpack.DefinePlugin({
+  'process.env.SKU_TENANT': JSON.stringify(options.tenant)
+}));
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
