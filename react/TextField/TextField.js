@@ -32,6 +32,8 @@ export default class TextField extends Component {
   static displayName = 'TextField';
 
   static propTypes = {
+    ...FieldLabel.propTypes,
+    ...FieldMessage.propTypes,
     /* eslint-disable consistent-return */
     id: (props, propName, componentName) => {
       const { id } = props;

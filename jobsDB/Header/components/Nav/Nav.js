@@ -12,6 +12,7 @@ class Nav extends Component {
     links: PropTypes.array.isRequired,
     isRightAligned: PropTypes.bool
   };
+
   static defaultProps = {
     isRightAligned: false
   };
@@ -22,10 +23,15 @@ class Nav extends Component {
       isDropdownVisible: false
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleNodeRef = this.handleNodeRef.bind(this);
   }
 
   componentWillUnmount() {
     document.removeEventListener('click', this.handleClick, false);
+  }
+
+  handleNodeRef(node) {
+    this.dropdownNode = node;
   }
 
   setDropdownVisibility(isVisible) {
@@ -83,11 +89,7 @@ class Nav extends Component {
                 {<span>{link.text}</span>}
               </a>
               {hasChildren && (
-                <ul
-                  className={styles.dropdownList}
-                  ref={node => {
-                    this.dropdownNode = node;
-                  }}>
+                <ul className={styles.dropdownList} ref={this.handleNodeRef}>
                   {link.childLinks.map(childLink => (
                     <li key={childLink.text} className={styles.dropdownItem}>
                       <a

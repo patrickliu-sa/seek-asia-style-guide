@@ -73,8 +73,9 @@ export default class Textarea extends Component {
         );
       }
     },
-    secondaryLabel: PropTypes.string
+    secondaryLabel: PropTypes.string,
     /* eslint-enable consistent-return */
+    ...FieldMessage.propTypes
   };
 
   static defaultProps = {

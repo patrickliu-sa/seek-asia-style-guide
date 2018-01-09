@@ -82,19 +82,6 @@ const getNavLinks = (name, xToken) => {
 
 const userLoggedOutLinks = [
   {
-<<<<<<< HEAD
-    href: 'shell.navLoginLink',
-    title: 'shell.navLoginTitle',
-    text: 'Log In',
-    hasIcon: false,
-    childLinks: []
-  },
-  {
-    href: 'shell.navSignUpLink',
-    title: 'shell.navSignUpTitle',
-    text: 'Sign Up',
-    hasIcon: false,
-=======
     href: 'header.loginLink',
     title: 'header.loginTitle',
     text: 'header.loginText',
@@ -105,52 +92,13 @@ const userLoggedOutLinks = [
     href: 'header.signUpLink',
     title: 'header.signUpTitle',
     text: 'header.signUpText',
->>>>>>> master
     childLinks: []
   }
 ];
 
-<<<<<<< HEAD
-const getUserLinks = candidate => {
-  const isUserLoggedIn = isObject(candidate);
-  return isUserLoggedIn ?
-    [
-      {
-        href: '',
-        title: candidate.username,
-        text: candidate.username,
-        preventTranslation: true,
-        hasIcon: false,
-        childLinks: [
-          {
-            href: 'shell.navLogoutLink',
-            title: 'shell.navLogoutTitle',
-            text: 'shell.navLogoutText'
-          },
-          {
-            href: 'shell.navHelpLink',
-            title: 'shell.navHelpTitle',
-            text: 'shell.navHelpText'
-          },
-          {
-            href: 'shell.navAccountLink',
-            hrefParams: {
-              id: candidate.id
-            },
-            title: 'shell.navAccountTitle',
-            text: 'shell.navAccountText'
-          }
-        ]
-      }
-    ] :
-    userLoggedOutLinks;
-};
-
-export default {
-  navLinks,
-=======
 const getUserLinks = (name, xToken) => {
-  return (name && name.length) ? [
+  return name && name.length ?
+  [
     {
       href: '#',
       title: name,
@@ -186,11 +134,11 @@ const getUserLinks = (name, xToken) => {
         }
       ]
     }
-  ] : userLoggedOutLinks;
+  ] :
+    userLoggedOutLinks;
 };
 
 export default {
   getNavLinks,
->>>>>>> master
   getUserLinks
 };

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import Logo from '../Logo/Logo';
 import Button from 'seek-asia-style-guide/react/Button/Button';
-import Text from 'seek-asia-style-guide/react/Text/Text';
 import MenuIcon from 'seek-asia-style-guide/react/HamburgerIcon/HamburgerIcon';
 import Nav from './components/Nav/Nav';
 import styles from './header.less';
@@ -17,6 +16,8 @@ class Header extends Component {
       isNavActive: false
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleNodeRef = this.handleNodeRef.bind(this);
+    this.handleMenuClick = this.handleMenuClick.bind(this);
   }
 
   componentWillUnmount() {
@@ -40,6 +41,16 @@ class Header extends Component {
     });
   }
 
+  handleMenuClick() {
+    if (!this.state.isNavActive) {
+      this.showNav(true);
+    }
+  }
+
+  handleNodeRef(node) {
+    this.dropdownNode = node;
+  }
+
   render() {
     const { user } = this.props;
     const { isNavActive } = this.state;
@@ -52,21 +63,11 @@ class Header extends Component {
         aria-label="Primary navigation">
         <section className={styles.content}>
           <div className={styles.container}>
-            <button
-              className={styles.toggle}
-              onClick={() => {
-                if (!isNavActive) {
-                  this.showNav(true);
-                }
-              }}>
+            <button className={styles.toggle} onClick={this.handleMenuClick}>
               <MenuIcon />
             </button>
 
-            <div
-              className={styles.navWrapper}
-              ref={node => {
-                this.dropdownNode = node;
-              }}>
+            <div className={styles.navWrapper} ref={this.handleNodeRef}>
               <div
                 className={classNames({
                   [styles.navContainer]: true,

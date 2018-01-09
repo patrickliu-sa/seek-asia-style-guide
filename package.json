@@ -34,7 +34,8 @@
     "sketch-to-git": "node scripts/sketch-to-git",
     "git-to-sketch": "node scripts/git-to-sketch",
     "format": "prettier --single-quote --jsx-bracket-same-line --write '{jobsDB,jobStreet,react,standalone,theme,docs}/**/*.js'",
-    "lint-fix": "eslint --fix app standalone/*/src docs/src react test jobsDB jobStreet"
+    "lint-js-fix": "eslint --fix app standalone/*/src docs/src react test jobsDB jobStreet",
+    "lint-less-fix": "stylelint '{theme,react,standalone,docs,jobsDB,jobStreet}/**/*.less' --fix --syntax less"
   },
   "config": {
     "commitizen": {

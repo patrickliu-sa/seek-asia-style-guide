@@ -376,9 +376,9 @@ export default () => (
         block: true,
         initialProps: {
           superstandard: true,
-          // eslint-disable-next-line react/jsx-key
           children: [
             'The last word of this sentence is ',
+            // eslint-disable-next-line react/jsx-key
             <Strong>strong.</Strong>
           ]
         },
@@ -480,9 +480,9 @@ export default () => (
         block: true,
         initialProps: {
           superstandard: true,
-          // eslint-disable-next-line react/jsx-key
           children: [
             'The last word of this sentence is ',
+            // eslint-disable-next-line react/jsx-key
             <Positive>positive.</Positive>
           ]
         },
@@ -522,9 +522,9 @@ export default () => (
         block: true,
         initialProps: {
           superstandard: true,
-          // eslint-disable-next-line react/jsx-key
           children: [
             'The last word of this sentence is ',
+            // eslint-disable-next-line react/jsx-key
             <Critical>critical.</Critical>
           ]
         },
@@ -564,9 +564,9 @@ export default () => (
         block: true,
         initialProps: {
           superstandard: true,
-          // eslint-disable-next-line react/jsx-key
           children: [
             'The last word of this sentence is ',
+            // eslint-disable-next-line react/jsx-key
             <Secondary>secondary.</Secondary>
           ]
         },
@@ -593,9 +593,9 @@ export default () => (
         block: true,
         initialProps: {
           superstandard: true,
-          // eslint-disable-next-line react/jsx-key
           children: [
             'The last word of this sentence is a ',
+            // eslint-disable-next-line react/jsx-key
             <TextLink href="#">link.</TextLink>
           ]
         },

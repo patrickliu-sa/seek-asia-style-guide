@@ -32,9 +32,11 @@ switch (options.tenant) {
     port = defaultPort;
 }
 
-config.plugins.push(new webpack.DefinePlugin({
-  'process.env.SKU_TENANT': JSON.stringify(options.tenant)
-}));
+config.plugins.push(
+  new webpack.DefinePlugin({
+    'process.env.SKU_TENANT': JSON.stringify(options.tenant)
+  })
+);
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,

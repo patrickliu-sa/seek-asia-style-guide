@@ -23,6 +23,8 @@ export default class Dropdown extends Component {
   static displayName = 'Dropdown';
 
   static propTypes = {
+    ...FieldLabel.propTypes,
+    ...FieldMessage.propTypes,
     /* eslint-disable consistent-return */
     id: (props, propName, componentName) => {
       const { id } = props;
@@ -101,6 +103,7 @@ export default class Dropdown extends Component {
       </option>
     );
   }
+
   renderSelect() {
     const { inputProps, id, options, placeholder } = this.props;
     const inputStyles = classnames({

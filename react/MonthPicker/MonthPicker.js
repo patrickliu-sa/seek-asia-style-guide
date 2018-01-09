@@ -34,7 +34,8 @@ export default class MonthPicker extends Component {
     }),
     native: PropTypes.bool,
     onChange: PropTypes.func,
-    onBlur: PropTypes.func
+    onBlur: PropTypes.func,
+    ...FieldLabel.propTypes
   };
 
   static defaultProps = {

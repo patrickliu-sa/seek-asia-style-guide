@@ -22,9 +22,10 @@ export default function Icon({
 
   return (
     <span
+      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: svgWithClasses }}
       {...combinedProps}
-    /> // eslint-disable-line react/no-danger
+    />
   );
 }
 
